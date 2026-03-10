@@ -4,7 +4,7 @@ import path from "path";
 
 // Read from ".env" file.
 dotenv.config({ path: path.resolve(__dirname, ".env") });
-export const STORAGE_STATE = path.join(__dirname, 'playwright/.auth/user.json');
+export const STORAGE_STATE = path.join(__dirname, "playwright/.auth/user.json");
 
 /**
  * Read environment variables from file.
@@ -19,6 +19,7 @@ export const STORAGE_STATE = path.join(__dirname, 'playwright/.auth/user.json');
  */
 export default defineConfig({
 	testDir: "./pom/tests",
+	/* Run all tests in parallel. */
 	/* Run tests in files in parallel */
 	fullyParallel: true,
 	/* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -41,25 +42,24 @@ export default defineConfig({
 
 	/* Configure projects for major browsers */
 	projects: [
+		{ name: "setup", testMatch: /.*\.setup\.ts/ },
 
-		{ name: 'setup', testMatch: /.*\.setup\.ts/ }, 
- 
 		{
 			name: "chromium",
 			use: { ...devices["Desktop Chrome"], storageState: STORAGE_STATE },
-			dependencies: ["setup"]	
+			dependencies: ["setup"],
 		},
 
 		{
 			name: "firefox",
 			use: { ...devices["Desktop Firefox"], storageState: STORAGE_STATE },
-			dependencies: ["setup"]
+			dependencies: ["setup"],
 		},
 
 		{
 			name: "webkit",
 			use: { ...devices["Desktop Safari"], storageState: STORAGE_STATE },
-			dependencies: ["setup"]
+			dependencies: ["setup"],
 		},
 
 		/* Test against mobile viewports. */
@@ -82,7 +82,6 @@ export default defineConfig({
 		//   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
 		// },
 	],
-
 
 	/* Run your local dev server before starting the tests */
 	// webServer: {
