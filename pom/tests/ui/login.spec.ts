@@ -16,4 +16,12 @@ test.describe("Login tests", async () => {
 		);
 		await expect(page.getByLabel("Settings")).toBeVisible({ timeout: 50000 });
 	});
+
+	test("should display the correct error message for invalid credentials", async () => {
+		await loginPage.login(
+			USER_CREDENTIALS.INVALID_USER,
+			USER_CREDENTIALS.INVALID_PASSWORD
+		);
+		await expect(loginPage.errorMessage).toBeVisible();
+	});
 });

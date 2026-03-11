@@ -13,7 +13,7 @@ export class LoginPage extends BasePage {
 		this.emailInput = page.locator("input[type=email]");
 		this.passwordInput = page.locator("input[type=password]");
 		this.loginButton = page.locator("button[type=submit]");
-		this.errorMessage = page.locator('[data-test="error"]');
+		this.errorMessage = page.getByText("Wrong email or password.");
 	}
 
 	async login(user: string, pass: string) {
