@@ -3,6 +3,8 @@ export const DEFAULT_TIMEOUT = 5000;
 export const USER_CREDENTIALS = {
 	STANDARD_USER: process.env.STANDARD_USER || "default_user",
 	PASSWORD: process.env.PASSWORD || "",
+	INVALID_USER: "invalidUser@mail.com",
+	INVALID_PASSWORD: "invalidPassword",
 };
 
 export const ERROR_MESSAGES = {
