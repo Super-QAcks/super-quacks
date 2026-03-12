@@ -15,4 +15,8 @@ export class Common {
 		await this.taskEditor.taskDescriptionInput.fill(desc);
 		await this.taskEditor.submitTaskButton.click();
 	}
+
+	async pressESCKey() {
+		await this.page.keyboard.press("Escape");
+	}
 }
