@@ -36,10 +36,7 @@ export const PRIORITY = {
 };
 
 export const DUE_DATE = {
-	TODAY: new Date()
-		.toLocaleString("en-US", { timeZone: "CST" })
-		.split(",")[0]
-		?.replaceAll("/", "-"),
+	TODAY: new Date().toISOString().split("T")[0],
 };
 
 export const COMMENT = {
